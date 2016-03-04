@@ -37,7 +37,7 @@ Node.proptypes = {
 	name: PropTypes.string.isRequired,
 	onClick: PropTypes.func.isRequired, 
 	nodes: PropTypes.array.isRequired,
-	children: PropTypes.array, 
+	children: PropTypes.array.isRequired, 
 	collapsed: PropTypes.bool
 }
 

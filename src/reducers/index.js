@@ -14,8 +14,16 @@ function nodes(state = {}, action){
 	// TODO: delete child from parent
 	switch(action.type){
 		case UPDATE_NODE:
-			let newNode = Object.assign({},state[action.nodeId],action.node)
-			return Object.assign({}, state, { [action.nodeId]: newNode })
+			let newNode = Object.assign(
+				{},
+				state[action.nodeId],
+				action.node
+			)
+			return Object.assign(
+				{}, 
+				state, 
+				{ [action.nodeId]: newNode }
+			)
 		default:
 			return state
 	}

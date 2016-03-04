@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import MyApp from './App'
+import App from './App'
 import {Provider} from 'react-redux'
 import configureStore from '../configureStore'
 
@@ -39,7 +39,7 @@ class Root extends Component {
 	render() {
 		return (
 			<Provider store={store}>
-				<MyApp />
+				<App />
 			</Provider>
 		)
 	}
