@@ -1,18 +1,28 @@
-import React, { Component, PropTypes } from 'react'
+import React, { PropTypes } from 'react'
 
 const Node = ({id, name, children, collapsed, onClick, nodes}) => {
 	let childNodes = null
+	let clickFn = null
 	if(!collapsed){
-		childNodes = <ul>
+		childNodes = <ul className='nodeChildren'>
 			{children.map((id) => {
 				const node = nodes[id]
-				return <Node {...node} onClick={() => onClick(node.id, node.collapsed)} nodes={nodes} key={node.id} />
+				return <Node 
+					{...node} 
+					onClick={() => onClick(node.id, node.collapsed)} 
+					nodes={nodes} 
+					key={node.id} 
+				/>
 			})}
 		</ul>
 	}
+	if(children.length){
+		clickFn = () => onClick(id, collapsed)
+	}
+
 	return (
 		<li className='nodeWrapper'>
-			<div className='nodeInfo' onClick={() => onClick(id, collapsed)}>
+			<div className='nodeInfo' onClick={clickFn}>
 				<span>Name: {name}</span>
 				{' '}
 				<span>Type: {children.length ? 'Folder' : 'File'}</span>
@@ -26,6 +36,7 @@ Node.proptypes = {
 	id: PropTypes.number.isRequired, 
 	name: PropTypes.string.isRequired,
 	onClick: PropTypes.func.isRequired, 
+	nodes: PropTypes.array.isRequired,
 	children: PropTypes.array, 
 	collapsed: PropTypes.bool
 }

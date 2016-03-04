@@ -5,7 +5,7 @@
   "main": "bundle.js",
   "scripts": {
     "dev": "node node_modules/webpack-dev-server/bin/webpack-dev-server.js --progress --colors --open -d --port 3001 --hot --inline",
-    "test": "mocha 'test/*.@(js|jsx)' -R spec --compilers jsx:babel-core/register,less:./test/null-compiler --require ./test/test_helper.js  --recursive"
+    "test": "mocha 'test/*.@(js|jsx)' -R spec --compilers jsx:babel-core/register --require ./test/test_dom_maker.js  --recursive"
   },
   "keywords": [],
   "author": "",
@@ -34,6 +34,7 @@
     "expect": "^1.14.0",
     "jsdom": "^8.1.0",
     "mocha": "^2.4.5",
+    "react-addons-test-utils": "^0.14.7",
     "webpack": "^1.12.14",
     "webpack-dev-server": "^1.14.1"
   }
