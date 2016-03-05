@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import Node from '../components/Node'
 import {updateNode} from '../actions'
+import './app.less'
 
 export const AppView = ({topLevel, nodes, handleClick}) => {
 	return (

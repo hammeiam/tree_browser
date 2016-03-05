@@ -3,7 +3,13 @@ import React, { PropTypes } from 'react'
 const Node = ({id, name, children, collapsed, onClick, nodes}) => {
 	let childNodes = null
 	let clickFn = null
+	let classNames = ['file']
+	if(children.length){
+		clickFn = () => onClick(id, collapsed)
+		classNames = ['folder']
+	}
 	if(!collapsed){
+		classNames.push('open')
 		childNodes = <ul className='nodeChildren'>
 			{children.map((id) => {
 				const node = nodes[id]
@@ -16,13 +22,10 @@ const Node = ({id, name, children, collapsed, onClick, nodes}) => {
 			})}
 		</ul>
 	}
-	if(children.length){
-		clickFn = () => onClick(id, collapsed)
-	}
 
 	return (
-		<li className='nodeWrapper'>
-			<div className='nodeInfo' onClick={clickFn}>
+		<li>
+			<div className={classNames.join(' ')} onClick={clickFn}>
 				<span>Name: {name}</span>
 				{' '}
 				<span>Type: {children.length ? 'Folder' : 'File'}</span>

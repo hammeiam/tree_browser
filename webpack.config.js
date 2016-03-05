@@ -14,7 +14,11 @@ module.exports = {
 			{
         test: /\.jsx?$/,
         loader: 'eslint'
-      }
+      },
+      {
+				test: /\.less$/,
+				loader: 'style!css!less'
+			}
 		]
 	}
 }
