@@ -25,7 +25,7 @@ export class AppView extends Component {
 			return this._dfsHelper(node, nodes)
 		}).reduce((prevArr, nextArr) => {
 			return prevArr.concat(nextArr)
-		})
+		}, [])
 	}
 
 	render() {
