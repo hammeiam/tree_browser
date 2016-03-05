@@ -10,20 +10,22 @@ export class AppView extends Component {
 		// a recursive helper function for dfs
 		// which returns an array of node depending on visibility.
 		if(node.children.length === 0 || node.collapsed){ return [node] }
-		return node.children.map(id => this._dfsHelper(nodes[id], nodes)).reduce((prevArr, nextArr) => {
-				return prevArr.concat(nextArr)
-			},[node])
-		return [node].concat(rec)
+		return node.children.map(id => {
+			return this._dfsHelper(nodes[id], nodes)
+		}).reduce((prevArr, nextArr) => {
+			return prevArr.concat(nextArr)
+		},[node])
 	}
 
 	_dfs(top, nodes){
 		// given the top level nodes, use Depth First Search to fetch all other nodes
-		let out = []
-		top.forEach(id => {
-			let node = nodes[id]
-			out = out.concat(this._dfsHelper(node, nodes))
+		let topLevelNodes = top.map(id => nodes[id])
+
+		return topLevelNodes.map(node => { 
+			return this._dfsHelper(node, nodes)
+		}).reduce((prevArr, nextArr) => {
+			return prevArr.concat(nextArr)
 		})
-		return out
 	}
 
 	render() {
@@ -38,10 +40,12 @@ export class AppView extends Component {
 						<th>Type</th>
 						<th>Depth</th>
 					</tr>
+
 					{(flattenedTree).map((node,i) => {
 						let evenClass = i % 2 === 0 ? 'even' : 'odd'
 						let fileClass = node.children.length ? 'folder' : 'file'
 						let nodeClasses = [evenClass, fileClass]
+
 						if(node.children.length){
 							let openClass = node.collapsed ? 'closed' : 'open'
 							nodeClasses.push(openClass)
