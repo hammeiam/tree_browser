@@ -1,4 +1,4 @@
-import expect, {spyOn} from 'expect'
+import expect from 'expect'
 import Node from '../src/components/Node'
 import React from 'react'
 import TestUtils, {Simulate, renderIntoDocument} from 'react-addons-test-utils'

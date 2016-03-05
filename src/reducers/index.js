@@ -3,14 +3,15 @@ import { UPDATE_NODE, ADD_NODE } from '../actions'
 
 
 function topLevel(state = [], action){
-	// TODO: add things to top level
 	switch(action.type){
 		case ADD_NODE:
 			let newState = state.slice()
+
 			if(!newState.includes(action.pathParts[0])){
 				newState.push(action.pathParts[0])
 			}
 			return newState
+		case UPDATE_NODE:
 		default:
 			return state
 	}
