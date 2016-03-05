@@ -17,10 +17,10 @@ Static html page that loads the bundle
 React component that creates a Redux store and connects it to our application by wrapping our App component in the Redux Provider component.
 
 **App.jsx**
-Renders the top level nodes and passes state and a click handler down to child nodes to handle visibility toggling.
+Renders the top level nodes and passes state and a click handler down to child nodes to handle visibility toggling. Uses Depth First Search to recursively flatten all children to prepare them for rendering.  
 
 **Node.jsx**
-The hard worker. React component that renders information about a piece of data. Labels the data as either a file or folder depending on if it has children. Recursively renders children if they exists. 
+React component that renders information about a piece of data. Labels the data as either a file or folder depending on if it has children. 
 
 ### Configure Store
 Returns a store object built from our reducer, and initial state. Allows for debugging through Redux Dev Tools if they exist on the window
