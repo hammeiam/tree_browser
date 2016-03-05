@@ -43,45 +43,22 @@ function shallowSetup(otherProps) {
 }
 
 describe('Node', () => {
-	it('hides children when collapsed', () => {
-		const props = {
-			children: [1,2],
-			collapsed: true
-		}
-		const { result, renderer } = shallowSetup(props)
-		const children = result.props.children
-		
-		expect(children[children.length - 1]).toBe(null)
-	})
-
-	it('shows children when not collapsed', () => {
-		const props = {
-			children: [1,2]
-		}
-		const { result, renderer } = shallowSetup(props)
-		const children = result.props.children
-
-		expect(children[children.length-1].type).toBe('ul')
-		expect(children[children.length-1].props.children.length).toBe(props.children.length)
-	})
 
 	it('is a folder when it has children', () => {
 		const props = {
 			children: [1,2]
 		}
 		const { result, renderer } = shallowSetup(props)
-		const childDiv = result.props.children[0]
-		const typeSpan = childDiv.props.children[2]
+		const nodeType = result.props.children[1]
 		
-		expect(typeSpan.props.children).toInclude('Folder')
+		expect(nodeType.props.children).toInclude('Folder')
 	})
 
 	it('is a file when it doesn\'t have children', () => {
 		const { result, renderer } = shallowSetup()
-		const childDiv = result.props.children[0]
-		const typeSpan = childDiv.props.children[2]
+		const nodeType = result.props.children[1]
 		
-		expect(typeSpan.props.children).toInclude('File')
+		expect(nodeType.props.children).toInclude('File')
 	})
 
 	it('has a click handler when it has children', () => {
@@ -91,18 +68,15 @@ describe('Node', () => {
 			onClick: function(){clickCounter++}
 		}
 		const { result, renderer } = shallowSetup(props)
-		const childDiv = result.props.children[0]
 
-		childDiv.props.onClick()
+		result.props.onClick()
 		expect(clickCounter).toBe(1)
 	})
 
 	it('has no click handler without children', () => {
 		const { result, renderer } = shallowSetup()
 		
-		const childDiv = result.props.children[0]
-
-		expect(childDiv.props.onClick).toNotExist()
+		expect(result.props.onClick).toNotExist()
 	})
 
 })

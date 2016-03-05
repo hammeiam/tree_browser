@@ -1,12 +1,9 @@
 import React, { PropTypes } from 'react'
 
-const Node = ({id, name, classProp, children, collapsed, onClick, depth}) => {
+const Node = ({id, name, classNames = [], children, collapsed, onClick, depth}) => {
 	let clickFn = null
-	let fileClass = children.length ? 'folder' : 'file'
-	let classNames = [fileClass, classProp]
+	
 	if(children.length){
-		let openClass = collapsed ? 'closed' : 'open'
-		classNames.push(openClass)
 		clickFn = () => onClick(id, collapsed)
 	}
 
@@ -25,7 +22,9 @@ Node.proptypes = {
 	name: PropTypes.string.isRequired,
 	onClick: PropTypes.func.isRequired, 
 	children: PropTypes.array.isRequired, 
-	collapsed: PropTypes.bool
+	collapsed: PropTypes.bool,
+	classNames: PropTypes.arrayOf(PropTypes.string),
+	depth: PropTypes.number.isRequired
 }
 
 export default Node

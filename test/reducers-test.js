@@ -16,6 +16,7 @@ describe('reducers', () => {
 				'foo': {
 					id: 'foo',
 					name: 'foo',
+					depth: 1,
 					children: []
 				}
 			}
@@ -26,11 +27,13 @@ describe('reducers', () => {
 				'foo': {
 					id: 'foo',
 					name: 'foo',
+					depth: 1,
 					children: ['foo/bang.js']
 				},
 				'foo/bang.js': {
 					id: 'foo/bang.js',
 					name: 'bang.js',
+					depth: 2,
 					children: []
 				}
 			}
@@ -50,11 +53,13 @@ describe('reducers', () => {
 				'foo': {
 					id: 'foo',
 					name: 'foo',
+					depth: 1,
 					children: ['foo/bang.js']
 				},
 				'foo/bang.js': {
 					id: 'foo/bang.js',
 					name: 'bang.js',
+					depth: 2,
 					children: []
 				}
 			}
@@ -73,6 +78,7 @@ describe('reducers', () => {
 				foo: {
 					id: 'foo',
 					name: 'foo',
+					depth: 1,
 					children: []
 				}
 			}
@@ -84,6 +90,7 @@ describe('reducers', () => {
 				'foo': {
 					id: 'foo',
 					name: 'foo',
+					depth: 1,
 					collapsed: true,
 					children: []
 				}

@@ -24,7 +24,7 @@ function shallowSetup(otherProps) {
 			id: 2, 
 			name: 'node2',
 			onClick: () => {}, 
-			children: [], 
+			children: [0], 
 			collapsed: false
 		}
 	}
@@ -50,21 +50,35 @@ function shallowSetup(otherProps) {
 describe('App', () => {
 	it('renders a topLevel node', () => {
 		const { result, renderer } = shallowSetup()
-		const ulElements = result.props.children
-		const nodeElements = ulElements.props.children
-		
+		const tbodyElement = result.props.children
+		const rowElements = tbodyElement.props.children
+		const nodeElements = rowElements[1]
+
 		expect(nodeElements.length).toBe(1)
 	})
 
 	it('renders many topLevel nodes', () => {
 		const props = {
-			topLevel: [0,1,2]
+			topLevel: [0,1]
 		}
 		const { result, renderer } = shallowSetup(props)
-		const ulElements = result.props.children
-		const nodeElements = ulElements.props.children
+		const tbodyElement = result.props.children
+		const rowElements = tbodyElement.props.children
+		const nodeElements = rowElements[1]
 		
-		expect(nodeElements.length).toBe(3)
+		expect(nodeElements.length).toBe(2)
+	})
+
+	it('renders many nodes recursively', () => {
+		const props = {
+			topLevel: [2]
+		}
+		const { result, renderer } = shallowSetup(props)
+		const tbodyElement = result.props.children
+		const rowElements = tbodyElement.props.children
+		const nodeElements = rowElements[1]
+		
+		expect(nodeElements.length).toBe(2)
 	})
 
 	it('renders no topLevel nodes', () => {
@@ -72,8 +86,9 @@ describe('App', () => {
 			topLevel: []
 		}
 		const { result, renderer } = shallowSetup(props)
-		const ulElements = result.props.children
-		const nodeElements = ulElements.props.children
+		const tbodyElement = result.props.children
+		const rowElements = tbodyElement.props.children
+		const nodeElements = rowElements[1]
 		
 		expect(nodeElements.length).toBe(0)
 	})
