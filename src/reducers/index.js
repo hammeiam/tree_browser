@@ -18,6 +18,12 @@ function topLevel(state = [], action){
 }
 
 function addNode(state, action){
+	/* 
+	*	 Given a node to add, add the leaf node or replace one with the same name.
+	*	 Then, go through each of the leaf's ancestors and add that node if it doesn't exist.
+	*  Additionally, add each node to the list of children of its parent nodes.
+	*  Break when we encounter a node that already exists. 
+	*/
 	let parts = action.pathParts
 	let newNodes = Object.assign(
 		{}, 
