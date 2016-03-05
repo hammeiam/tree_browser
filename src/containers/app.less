@@ -1,6 +1,7 @@
 .main, body, html {
 	padding: 0;
 	margin: 0;
+	font-family: Verdana, Geneva, sans-serif;
 }
 ul {
 	padding: 0;
@@ -8,21 +9,46 @@ ul {
 	width: 100%;
 }
 
-li {
+table {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+table, th, td {
+   border: 1px solid lightgrey;
+}
+
+th {
+	background: linear-gradient(white, lightgrey);
+	border-bottom: 2px solid grey
+}
+
+tr {
 	list-style: none;
 	width: 100%;
-
-	& div {
-		height: 30px;
-		border-bottom: 1px solid grey;
-		&.open{
-			
+	height: 30px;
+	padding-top: 10px;
+	border-bottom: 1px solid grey;
+	&.even {
+		background-color: white;
+	}
+	&.odd {
+		background-color: #F2F2F2;
+	}
+	&.open {
+		td:first-child {
+			&::before{
+				content: "v ";
+				color: red;
+			}
 		}
-		&.folder {
-			background-color: salmon;
-		}
-		&.file {
-
+	}
+	&.closed {
+		td:first-child {
+			&::before{
+				content: "> ";
+				color: red;
+			}
 		}
 	}
 }

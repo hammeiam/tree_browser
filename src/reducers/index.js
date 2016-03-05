@@ -26,7 +26,8 @@ function addNode(state, action){
 			{
 				id: action.fullPath,
 				name: parts[parts.length - 1],
-				children: []
+				children: [],
+				depth: parts.length
 			}
 		}
 	)
@@ -44,7 +45,8 @@ function addNode(state, action){
 			newNodes[currentPath] = {
 				id: currentPath,
 				name: parts[i],
-				children: [lastPath]
+				children: [lastPath],
+				depth: i + 1
 			}
 		}
 	}
