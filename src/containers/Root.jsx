@@ -15,6 +15,18 @@ window.addFile = function(file){
 	store.dispatch(addNode(file))
 }
 
+window.addGeneratedFiles = function(numFiles = 20){
+	const words = ['Applications','Contents','Plugins','Media', ':C', 'Documents','Drive','Dropbox','Public', 'Templates','Root','Library','Media', 'random\\ thoughts']
+	const extensions = ['.js','.exe','.rb','.json','.pkg','.docx']
+	for(let i = 0; i < numFiles; i++){
+		let start = Math.floor(Math.random() * (words.length - 2))
+		let count = Math.floor(Math.random() * (words.length - 1 - start)) + 1
+		let exIdx = Math.floor(Math.random() * (extensions.length - 1))
+		let path = words.slice(start,start + count).join(start+'/')
+		addFile(path + extensions[exIdx])
+	}
+}
+
 class Root extends Component {
 	render() {
 		return (
