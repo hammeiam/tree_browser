@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 import Node from '../components/Node'
 import {updateNode} from '../actions'
 
-const AppView = ({topLevel, nodes, handleClick}) => {
+export const AppView = ({topLevel, nodes, handleClick}) => {
 	return (
 		<div className='main'>
 			<ul>

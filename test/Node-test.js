@@ -1,7 +1,7 @@
 import expect from 'expect'
 import Node from '../src/components/Node'
 import React from 'react'
-import TestUtils, {Simulate, renderIntoDocument} from 'react-addons-test-utils'
+import TestUtils, {renderIntoDocument} from 'react-addons-test-utils'
 
 function shallowSetup(otherProps) {
 	let nodes = {
