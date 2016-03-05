@@ -31,11 +31,13 @@ function addNode(state, action){
 	)
 
 	for(let i = parts.length - 2; i >= 0; i--){
-		let lastPath = parts.slice(0,i+2).join('/')
+		let lastPath = parts.slice(0,i + 2).join('/')
 		let currentPath = parts.slice(0,i + 1).join('/')
 		
 		if(newNodes[currentPath]){
-			newNodes[currentPath]['children'].push(lastPath)
+			if(!newNodes[currentPath]['children'].includes(lastPath)){
+				newNodes[currentPath]['children'].push(lastPath)
+			}
 			break
 		} else {
 			newNodes[currentPath] = {

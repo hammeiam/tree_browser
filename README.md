@@ -5,6 +5,8 @@
 - run `npm install`
 - run `npm run dev` to start the dev server on port 3001
 - run `npm run test` to perform tests
+- from the dev console, add new files like so:
+`window.addFile('Users/admin/fat32/not\ a \ virus.exe')`
 
 ## Structure:
 ### Components
