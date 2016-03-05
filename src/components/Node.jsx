@@ -9,7 +9,7 @@ const Node = ({id, name, children, collapsed, onClick, nodes}) => {
 				const node = nodes[id]
 				return <Node 
 					{...node} 
-					onClick={() => onClick(node.id, node.collapsed)} 
+					onClick={onClick} 
 					nodes={nodes} 
 					key={node.id} 
 				/>
@@ -33,7 +33,7 @@ const Node = ({id, name, children, collapsed, onClick, nodes}) => {
 }
 
 Node.proptypes = {
-	id: PropTypes.number.isRequired, 
+	id: PropTypes.string.isRequired, 
 	name: PropTypes.string.isRequired,
 	onClick: PropTypes.func.isRequired, 
 	nodes: PropTypes.array.isRequired,

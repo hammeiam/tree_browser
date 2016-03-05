@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import App from './App'
 import {Provider} from 'react-redux'
 import configureStore from '../configureStore'
+import {addNode} from '../actions'
 
 const initialState = {
 	topLevel: [0],
@@ -33,7 +34,14 @@ const initialState = {
 	}
 }
 
-const store = configureStore(initialState)
+const store = configureStore()
+
+store.dispatch(addNode('foo/file1.js'))
+store.dispatch(addNode('foo/bar/file2.js'))
+store.dispatch(addNode('foo/bin/file3.js'))
+store.dispatch(addNode('foo/bin/baz/file4.js'))
+
+
 
 class Root extends Component {
 	render() {
