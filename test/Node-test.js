@@ -25,6 +25,13 @@ function shallowSetup(otherProps) {
 			onClick: () => {}, 
 			children: [], 
 			collapsed: false
+		},
+		'slash\\/name.js': {
+			id: 'slash\\/name.js', 
+			name: 'slash\\/name.js',
+			onClick: () => {}, 
+			children: [], 
+			collapsed: false
 		}
 	}
 	Object.keys(nodes).forEach(id => {
@@ -77,6 +84,17 @@ describe('Node', () => {
 		const { result, renderer } = shallowSetup()
 		
 		expect(result.props.onClick).toNotExist()
+	})
+
+	it('correctly displays escaped backslashes', () => {
+		const props = {
+			id: 'slash\\/name.js', 
+			name: 'slash\\/name.js'
+		}
+		const { result, renderer } = shallowSetup(props)
+		const nodeName = result.props.children[0].props.children
+		
+		expect(nodeName).toEqual('slash/name.js')
 	})
 
 })

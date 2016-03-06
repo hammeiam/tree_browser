@@ -6,31 +6,24 @@ import './app.less'
 
 
 export class AppView extends Component {
-	_dfsHelper(node, nodes){
-		// a recursive helper function for dfs
-		// which returns an array of node depending on visibility.
+	_dfs(node, nodes){
+		// Depth First Search.
+		// Return flattened array of all visible child nodes.
 		if(node.children.length === 0 || node.collapsed){ return [node] }
 		return node.children.map(id => {
-			return this._dfsHelper(nodes[id], nodes)
+			return this._dfs(nodes[id], nodes)
 		}).reduce((prevArr, nextArr) => {
 			return prevArr.concat(nextArr)
 		},[node])
 	}
 
-	_dfs(top, nodes){
-		// given the top level nodes, use Depth First Search to fetch all other nodes
-		let topLevelNodes = top.map(id => nodes[id])
-
-		return topLevelNodes.map(node => { 
-			return this._dfsHelper(node, nodes)
-		}).reduce((prevArr, nextArr) => {
-			return prevArr.concat(nextArr)
-		}, [])
-	}
-
 	render() {
 		const {topLevel, nodes, handleClick} = this.props
-		let flattenedTree = this._dfs(topLevel, nodes)
+		let flattenedTree = topLevel.map(id => { 
+				return this._dfs(nodes[id], nodes)
+			}).reduce((prevArr, nextArr) => {
+				return prevArr.concat(nextArr)
+			}, [])
 
 		return (
 			<table className='main'>

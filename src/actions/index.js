@@ -1,25 +1,24 @@
 export const UPDATE_NODE = 'UPDATE_NODE'
 export const ADD_NODE = 'ADD_NODE'
 
-
 function parsePath(str){
-	var output = []
-	var temp = ''
-	var flag = false
-	for(var i = 0; i<str.length; i++){
-		var char = str[i]
+	let output = []
+	let temp = ''
+	let flag = false
+	for(let i = 0; i<str.length; i++){
+		let char = str[i]
 		if(!flag){
-			if(char === '\\'){
-				flag = true
-			} else if(char === '/'){
+			if(char === '/'){
 				output.push(temp)
 				temp = ''
-			} else {
-				temp += char
+				continue
+			} else if(char === '\\'){
+				flag = true
 			}
 		} else {
-			temp += char
+			flag = false
 		}
+		temp += char
 	}
 	output.push(temp)
 	return output

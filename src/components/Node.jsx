@@ -10,7 +10,7 @@ const Node = ({id, name, classNames = [], children, collapsed, onClick, depth}) 
 	return (
 		<tr className={classNames.join(' ')} 
 				onClick={clickFn}>
-			<td style={{paddingLeft: depth * 15}}>{name}</td>
+			<td style={{paddingLeft: depth * 15}}>{name.replace('\\','')}</td>
 			<td>{children.length ? 'Folder' : 'File'}</td>
 			<td>{depth}</td>
 		</tr>

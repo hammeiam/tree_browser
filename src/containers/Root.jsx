@@ -9,7 +9,8 @@ const store = configureStore()
 store.dispatch(addNode('foo/file1.js'))
 store.dispatch(addNode('foo/bar/file2.js'))
 store.dispatch(addNode('foo/bin/file3.js'))
-store.dispatch(addNode('foo/bin/baz/file4.js'))
+store.dispatch(addNode('foo/bin/random\ stuff/file4.js'))
+store.dispatch(addNode('foo/bin/work\\/professional/resume.txt'))
 
 window.addFile = function(file){
 	store.dispatch(addNode(file))
@@ -17,7 +18,7 @@ window.addFile = function(file){
 
 window.addGeneratedFiles = function(numFiles = 20){
 	const words = ['Applications','Contents','Plugins','Media', ':C', 'Documents','Drive','Dropbox','Public', 'Templates','Root','Library','Media', 'random\\ thoughts']
-	const extensions = ['.js','.exe','.rb','.json','.pkg','.docx']
+	const extensions = ['.js','.exe','.rb','.json','.pkg','.docx', '.txt']
 	for(let i = 0; i < numFiles; i++){
 		let start = Math.floor(Math.random() * (words.length - 2))
 		let count = Math.floor(Math.random() * (words.length - 1 - start)) + 1
