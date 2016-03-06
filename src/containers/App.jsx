@@ -19,7 +19,7 @@ export class AppView extends Component {
   }
 
   render() {
-    const {topLevel, nodes, handleClick} = this.props
+    const { topLevel, nodes, handleClick } = this.props
     let flattenedTree = topLevel.map(id => {
       return this._dfs(nodes[id], nodes)
     }).reduce((prevArr, nextArr) => {
@@ -27,33 +27,41 @@ export class AppView extends Component {
     }, [])
 
     return (
-      <table className='main'>
-				<tbody>
-					<tr>
-						<th>Name</th>
-						<th>Type</th>
-						<th>Depth</th>
-					</tr>
+      <div className='table' onKeyDown={() => {console.log('ji')}}>
+				<div className='row fixed'>
+					<div className='cell rowHeader'>
+            Name
+            <div className='fixed'><span>Name</span></div>
+          </div>
+					<div className='cell rowHeader'>
+            Type
+            <div className='fixed'><span>Type</span></div>
+          </div>
+					<div className='cell rowHeader'>
+            Depth
+            <div className='fixed'><span>Depth</span></div>
+          </div>
+				</div>
 
-					{(flattenedTree).map((node, i) => {
-		        let evenClass = i % 2 === 0 ? 'even' : 'odd'
-		        let fileClass = node.children.length ? 'folder' : 'file'
-		        let nodeClasses = [evenClass, fileClass]
+				{(flattenedTree).map((node, i) => {
+	        let evenClass = i % 2 === 0 ? 'even' : 'odd'
+	        let fileClass = node.children.length ? 'folder' : 'file'
+	        let nodeClasses = [evenClass, fileClass]
 
-		        if (node.children.length) {
-		          let openClass = node.collapsed ? 'closed' : 'open'
-		          nodeClasses.push(openClass)
-		        }
+	        if (node.children.length) {
+	          let openClass = node.collapsed ? 'closed' : 'open'
+	          nodeClasses.push(openClass)
+	        }
 
-		        return <Node
-		          {...node}
-		          classNames={nodeClasses}
-		          key={node.id}
-		          onClick= {handleClick}
-		          />
-		       })}
-				</tbody>
-			</table>
+	        return <Node
+	          {...node}
+            style
+	          classNames={nodeClasses}
+	          key={node.id}
+	          onClick= {handleClick}
+	          />
+	       })}
+			</div>
     )
   }
 }

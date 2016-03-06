@@ -1,55 +1,110 @@
-.main, body, html {
+@row-height: 30px;
+
+body, html {
 	padding: 0;
 	margin: 0;
 	font-family: Verdana, Geneva, sans-serif;
-}
-ul {
-	padding: 0;
-	margin: 0 0 0 15px;
-	width: 100%;
+	min-width: 700px;
 }
 
-table {
-	width: 100%;
-	border-collapse: collapse;
-}
+.table {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
 
-table, th, td {
-   border: 1px solid lightgrey;
-}
+	.row {
+		display: flex;
+		flex-wrap: nowrap;
+		flex-flow: row;
+		justify-content: flex-end;
+		height: @row-height;
+    align-items: center;
+    border-bottom: 1px solid lightgray;
 
-th {
-	background: linear-gradient(white, lightgrey);
-	border-bottom: 2px solid grey
-}
+    &:hover {
+    	background-color: lightgray !important;
+    }
 
-tr {
-	list-style: none;
-	width: 100%;
-	height: 30px;
-	padding-top: 10px;
-	border-bottom: 1px solid grey;
+    &.active {
+    	background-color: lightcoral !important;
+    	color: white;
+    	.cell:first-child {
+				&::before{
+					color: white !important; 
+				}
+			}
+    }
 
-	&.even {
-		background-color: white;
-	}
-	&.odd {
-		background-color: #F2F2F2;
-	}
-	&.open {
-		td:first-child {
-			&::before{
-				content: "v ";
-				color: red;
+		&.even {
+			background-color: white;
+		}
+
+		&.odd {
+			background-color: #F2F2F2;
+		}
+
+		&.folder {
+			.cell:first-child {
+				&::before{
+					content: "> ";
+					color: orangered;
+					display: inline-block;
+					width: 16px;
+				}
 			}
 		}
-	}
-	&.closed {
-		td:first-child {
-			&::before{
-				content: "> ";
-				color: red;
+
+		&.open {
+			.cell:first-child {
+				&::before{
+					transition: transform .2s;
+					transform: rotate(90deg);
+				}
 			}
+		}
+
+		&.closed {
+			.cell:first-child {
+				&::before{
+					transition: transform .2s;
+					transform: rotate(0deg);
+				}
+			}
+		}
+
+		.cell {
+			&:nth-child(1){
+				flex: 1 0 50%;
+			}
+
+			&:nth-child(2), &:nth-child(3){
+				flex: 0 0 100px;
+			}
+
+			.fixed {
+				z-index: 1;
+				position: fixed;
+			  background: red;
+			  width: 100%;
+			  background: linear-gradient(white, lightgrey);
+				border-bottom: 2px solid grey;
+			  top: 0;
+			  height: @row-height;
+
+			  span:first-child {
+			  	color: black;
+			  	display: inline-block;
+			  	padding: 15px 0 0 5px;
+			  }
+			}
+		}
+
+		.rowHeader {
+		  height: 0;
+		  line-height: 0;
+		  color: transparent;
+		  border: none;
+		  white-space: nowrap;
 		}
 	}
 }

@@ -8,12 +8,18 @@ const Node = ({ id, name, classNames = [], children, collapsed, onClick, depth }
 	}
 
 	return (
-		<tr className={classNames.join(' ')}
+		<div className={classNames.join(' ') + ' row'}
 				onClick={clickFn}>
-			<td style={{paddingLeft: depth * 15}}>{name.replace('\\','')}</td>
-			<td>{children.length ? 'Folder' : 'File'}</td>
-			<td>{depth}</td>
-		</tr>
+			<div className='cell' style={{paddingLeft: depth * 15}}>
+				{name.replace('\\','')}
+			</div>
+			<div className='cell'>
+				{children.length ? 'Folder' : 'File'}
+			</div>
+			<div className='cell'>
+				{depth}
+			</div>
+		</div>
 	)
 }
 
