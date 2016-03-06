@@ -12,5 +12,8 @@
     "console": true,
     "document": true,
     "window": true
+  },
+  "rules": {
+    "no-trailing-spaces": [2]
   }
 }
