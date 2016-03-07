@@ -27,7 +27,7 @@ export class AppView extends Component {
     }, [])
 
     return (
-      <div className='table' onKeyDown={() => {console.log('ji')}}>
+      <div className='table'>
 				<div className='row fixed'>
 					<div className='cell rowHeader'>
             Name
@@ -55,10 +55,9 @@ export class AppView extends Component {
 
 	        return <Node
 	          {...node}
-            style
-	          classNames={nodeClasses}
-	          key={node.id}
-	          onClick= {handleClick}
+	          classNames={ nodeClasses }
+	          key={ node.id }
+	          onClick={ handleClick }
 	          />
 	       })}
 			</div>
