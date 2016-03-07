@@ -12,13 +12,13 @@
 Problems? Make sure you have a modern version of Node (5+) and npm (3.7+). Try `npm cache clean` as well. 
 
 ## Data Flow:
-This app follows the basic redux pattern. 
+This app follows the basic redux pattern: 
 
-Actions are objects with payloads of information that are created by actionCreators. They look like {type: 'SOME_ACTION', payload1: [], payload2: ''}
+**Actions** are objects with payloads of information that are created by actionCreators. They look like {type: 'SOME_ACTION', payload1: [], payload2: ''}
 
-Actions are processed by Reducers, which are functions that know how to modify the state of the app based on a type of action. 
+Actions are processed by **Reducers**, which are functions that know how to modify the state of the app based on a type of action. 
 
-Application state is represented as a single object which is maintained by a redux Store. The store instance exposes `getState` for reading state, `dispatch(action)` for modifying state, and `un/subscribe(listener)` for handling listeners. A store is instantiated with a reducer.
+Application state is represented as a single object which is maintained by a redux **Store**. The store instance exposes `getState` for reading state, `dispatch(action)` for modifying state, and `un/subscribe(listener)` for handling listeners. A store is instantiated with a reducer.
 
 Thus the flow of data looks like this:
 

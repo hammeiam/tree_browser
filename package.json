@@ -5,13 +5,13 @@
   "main": "bundle.js",
   "scripts": {
     "dev": "node node_modules/webpack-dev-server/bin/webpack-dev-server.js --progress --colors --open -d --port 3001 --hot --inline",
+    "build": "node node_modules/webpack/bin/webpack.js -p --optimize-dedupe",
     "test": "mocha 'test/*.@(js|jsx)' -R spec --compilers jsx:babel-core/register,less:./test/null-compiler --require ./test/test_setup.js  --recursive"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "font-awesome": "^4.5.0",
     "react": "^0.14.7",
     "react-dom": "^0.14.7",
     "react-redux": "^4.4.0",

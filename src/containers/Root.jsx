@@ -23,6 +23,12 @@ window.addGeneratedFiles = function(numFiles = 20) {
   }
 }
 
+console.log('/********************************\\')
+console.log('|*   THE AMAZING TREE BROWSER   *|')
+console.log('|*   use addFile("file/path")   *|')
+console.log('|*   use addGeneratedFiles(8)   *|')
+console.log('\\********************************/')
+
 // starter data
 addFile('foo/file1.js')
 addFile('foo/bar/file2.js')
