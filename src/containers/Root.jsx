@@ -6,12 +6,7 @@ import { addNode } from '../actions'
 
 const store = configureStore()
 
-store.dispatch(addNode('foo/file1.js'))
-store.dispatch(addNode('foo/bar/file2.js'))
-store.dispatch(addNode('foo/bin/file3.js'))
-store.dispatch(addNode('foo/bin/random\ stuff/file4.js'))
-store.dispatch(addNode('foo/bin/work\\/professional/resume.txt'))
-
+// helper functions for adding files via console
 window.addFile = function(file) {
   store.dispatch(addNode(file))
 }
@@ -27,6 +22,13 @@ window.addGeneratedFiles = function(numFiles = 20) {
     addFile(path + extensions[exIdx])
   }
 }
+
+// starter data
+addFile('foo/file1.js')
+addFile('foo/bar/file2.js')
+addFile('foo/bin/file3.js')
+addFile('foo/bin/random\ stuff/file4.js')
+addFile('foo/bin/work\\/professional/resume.txt')
 
 class Root extends Component {
   render() {

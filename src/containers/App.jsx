@@ -65,12 +65,7 @@ export class AppView extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-    topLevel: state.topLevel,
-    nodes: state.nodes
-  }
-}
+const mapStateToProps = (state) => state
 
 const mapDispatchToProps = (dispatch) => {
   return {
