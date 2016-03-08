@@ -17,8 +17,8 @@ window.addGeneratedFiles = function(numFiles = 20) {
   for (let i = 0; i < numFiles; i++) {
     let start = Math.floor(Math.random() * (words.length - 2))
     let count = Math.floor(Math.random() * (words.length - 1 - start)) + 1
-    let exIdx = Math.floor(Math.random() * (extensions.length - 1))
-    let path = words.slice(start, start + count).join(start + '/')
+    let exIdx = Math.floor(Math.random() * (extensions.length))
+    let path = words.slice(start, start + count).join(count + '/')
     addFile(path + extensions[exIdx])
   }
 }

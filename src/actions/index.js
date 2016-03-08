@@ -4,19 +4,19 @@ export const ADD_NODE = 'ADD_NODE'
 function parsePath(str) {
   let output = []
   let temp = ''
-  let flag = false
+  let escaped = false
   for (let i = 0; i < str.length; i++) {
     let char = str[i]
-    if (!flag) {
+    if (!escaped) {
       if (char === '/') {
         output.push(temp)
         temp = ''
         continue
       } else if (char === '\\') {
-        flag = true
+        escaped = true
       }
     } else {
-      flag = false
+      escaped = false
     }
     temp += char
   }
