@@ -22,6 +22,40 @@ Object.keys(window).forEach((key) => {
   }
 });
 
+global.defaultState = {
+  topLevel: ['top1', 'top2', 'top3'],
+  nodes: {
+    'top1': {
+      id: 'top1',
+      name: 'top1',
+      children: [],
+      collapsed: false,
+      depth: 1
+    },
+    'top2': {
+      id: 'top2',
+      name: 'top2',
+      children: [],
+      collapsed: false,
+      depth: 1
+    },
+    'top3': {
+      id: 'top3',
+      name: 'top3',
+      children: ['top3/middle1'],
+      collapsed: false,
+      depth: 1
+    },
+    'top3/middle1': {
+      id: 'top3/middle1',
+      name: 'middle1',
+      children: [],
+      collapsed: false,
+      depth: 2
+    }
+  }
+}
+
 global.shallowSetup = function(Component) {
   /*
   * A curried function used to set up test components.
@@ -33,36 +67,7 @@ global.shallowSetup = function(Component) {
   * component and the TestUtils shallow renderer itself.
   */
 
-  const nodes = {
-    'top1': {
-      id: 'top1',
-      name: 'top1',
-      onClick: () => {},
-      children: [],
-      collapsed: false
-    },
-    'top2': {
-      id: 'top2',
-      name: 'top2',
-      onClick: () => {},
-      children: [],
-      collapsed: false
-    },
-    'top3': {
-      id: 'top3',
-      name: 'top3',
-      onClick: () => {},
-      children: ['top3/middle1'],
-      collapsed: false
-    },
-    'top3/middle1': {
-      id: 'top3/middle1',
-      name: 'middle1',
-      onClick: () => {},
-      children: [],
-      collapsed: false
-    }
-  }
+  const nodes = defaultState.nodes
 
   Object.keys(nodes).forEach(id => {
     nodes[id]['nodes'] = nodes

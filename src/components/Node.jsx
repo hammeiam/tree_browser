@@ -8,7 +8,7 @@ const Node = ({ id, name, classNames = [], children, collapsed, onClick, depth }
 	}
 
 	return (
-		<div className={classNames.join(' ') + ' row'}
+		<div className={classNames.join(' ') + ' row node'}
 				onClick={clickFn}>
 			<div className='cell' style={{paddingLeft: depth * 15}}>
 				{name.replace('\\','')}
